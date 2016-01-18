@@ -82,3 +82,11 @@ test('adding milliseconds', function (t) {
   t.equal(subtracted.getMilliseconds(), 999);
   t.end();
 });
+
+test('differenceInDays', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(teatime.differenceInDays(d, teatime.addDays(d, 1)), 1);
+  t.equal(teatime.differenceInDays(d, teatime.addDays(d, 1000)), 1000);
+  t.equal(teatime.differenceInDays(d, teatime.addDays(d, -1)), -1);
+  t.end();
+});
