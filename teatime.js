@@ -112,7 +112,7 @@ var teatime = {
       throw new Error('Weekend days needs to be an array');
     }
     constants.WEEKEND_DAYS = days;
-    constants.WORK_DAYS = difference(days, [0, 1, 2, 3, 4, 5, 6]);
+    constants.WORK_DAYS = difference([0, 1, 2, 3, 4, 5, 6], days);
   },
 
   daysInPeriod: function(firstDay, length, days) {
@@ -121,11 +121,19 @@ var teatime = {
     }
     var total = 0;
     for (var i = 0; i < length; i++) {
-      if (days.indexOf(i % 7) !== -1) {
+      if (days.indexOf((firstDay + i) % 7) !== -1) {
         total++;
       }
     }
     return total;
+  },
+
+  weekendDaysInPeriod: function (firstDay, length) {
+    return teatime.daysInPeriod(firstDay, length, constants.WEEKEND_DAYS);
+  },
+
+  workDaysInPeriod: function (firstDay, length) {
+    return teatime.daysInPeriod(firstDay, length, constants.WORK_DAYS);
   },
 
 };

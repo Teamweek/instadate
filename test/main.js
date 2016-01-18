@@ -222,3 +222,19 @@ test('daysInPeriod', function (t) {
   t.equal(days, 4);
   t.end();
 });
+
+test('weekendDaysInPeriod', function (t) {
+  t.equal(teatime.weekendDaysInPeriod(0, 7), 2);
+  t.equal(teatime.weekendDaysInPeriod(0, 14), 4);
+  t.equal(teatime.weekendDaysInPeriod(3, 14), 4);
+  t.equal(teatime.weekendDaysInPeriod(1, 5), 0);
+  t.end();
+});
+
+test('workDaysInPeriod', function (t) {
+  t.equal(teatime.workDaysInPeriod(0, 7), 5);
+  t.equal(teatime.workDaysInPeriod(0, 14), 10);
+  t.equal(teatime.workDaysInPeriod(3, 14), 10);
+  t.equal(teatime.workDaysInPeriod(1, 5), 5);
+  t.end();
+});
