@@ -90,3 +90,12 @@ test('differenceInDays', function (t) {
   t.equal(teatime.differenceInDays(d, teatime.addDays(d, -1)), -1);
   t.end();
 });
+
+test('isSameDay', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.ok(teatime.isSameDay(d, teatime.addHours(d, 1)));
+  t.ok(teatime.isSameDay(d, teatime.addHours(d, 10)));
+  t.ok(teatime.isSameDay(d, teatime.noon(d)));
+  t.notOk(teatime.isSameDay(d, teatime.addDays(d, 1)));
+  t.end();
+});

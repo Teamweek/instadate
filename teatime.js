@@ -42,6 +42,12 @@ var teatime = {
 
   addMilliseconds: function (d, ms) {
     return new Date(d.getTime() + ms);
+  },
+
+  isSameDay: function (a, b) {
+    return a.getDate() === b.getDate() &&
+      a.getMonth() === b.getMonth() &&
+      a.getFullYear() === b.getFullYear();
   }
 
 };
