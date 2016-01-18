@@ -115,6 +115,19 @@ var teatime = {
     constants.WORK_DAYS = difference(days, [0, 1, 2, 3, 4, 5, 6]);
   },
 
+  daysInPeriod: function(firstDay, length, days) {
+    if (firstDay instanceof Date) {
+      firstDay = firstDay.getDay();
+    }
+    var total = 0;
+    for (var i = 0; i < length; i++) {
+      if (days.indexOf(i % 7) !== -1) {
+        total++;
+      }
+    }
+    return total;
+  },
+
 };
 
 module.exports = teatime;

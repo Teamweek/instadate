@@ -212,3 +212,13 @@ test('setWeekendDays', function (t) {
   t.ok(teatime.isWeekendDay(6));
   t.end();
 });
+
+test('daysInPeriod', function (t) {
+  var date = new Date();
+  var days = teatime.daysInPeriod(date, 10, [0, 1, 2, 3, 4, 5, 6]);
+  t.equal(days, 10);
+
+  var days = teatime.daysInPeriod(0, 10, [0, 1]);
+  t.equal(days, 4);
+  t.end();
+});
