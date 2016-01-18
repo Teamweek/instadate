@@ -4,7 +4,7 @@ A minimal high performance date library for Node.js and Browser. Use it to compa
 
 ## Motivation behind Teatime
 
-Current popular date libraries put a lot of effort into doing a lot of things correctly. Teatime on the other hand only has a handful of features that are all geared towards performance. Teatime is more of a wrapper around the native JavaScript Date then a full on date library.
+Current popular date libraries put a lot of effort into doing a lot of things correctly. Teatime on the other hand only has a handful of features that are all geared towards performance. Teatime is more of a wrapper around the native JavaScript Date than a full on date library.
 
 Use Teatime when you need to run thousands of date manipulations or comparisons per second  .
 
