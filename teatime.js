@@ -1,8 +1,12 @@
+var difference = require('lodash.difference');
+
 var constants = {
   MS_IN_DAY: 1000 * 60 * 60 * 24,
   MS_IN_HOUR: 1000 * 60 * 60,
   MS_IN_MINUTE: 1000 * 60,
   MS_IN_SECOND: 1000,
+  WEEKEND_DAYS: [6, 0],
+  WORK_DAYS: [1, 2, 3, 4, 5],
 }
 
 var teatime = {
@@ -85,6 +89,30 @@ var teatime = {
     var date = new Date(d.getFullYear(), d.getMonth() + 1, 0);
     date.setHours(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds());
     return date;
+  },
+
+  isWeekendDay: function (day) {
+    return constants.WEEKEND_DAYS.indexOf(day) !== -1;
+  },
+
+  isWorkDay: function (day) {
+    return !teatime.isWeekendDay(day);
+  },
+
+  isWeekendDate: function (date) {
+    return teatime.isWeekendDay(date.getDay());
+  },
+
+  isWorkDate: function (date) {
+    return !teatime.isWeekendDate(date);
+  },
+
+  setWeekendDays: function (days) {
+    if (!(days instanceof Array)) {
+      throw new Error('Weekend days needs to be an array');
+    }
+    constants.WEEKEND_DAYS = days;
+    constants.WORK_DAYS = difference(days, [0, 1, 2, 3, 4, 5, 6]);
   },
 
 };

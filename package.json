@@ -19,5 +19,8 @@
   "devDependencies": {
     "tap-spec": "^4.1.1",
     "tape": "^4.4.0"
+  },
+  "dependencies": {
+    "lodash.difference": "^4.0.1"
   }
 }

@@ -145,3 +145,70 @@ test('lastDateInMonth', function (t) {
   t.equal(teatime.lastDateInMonth(d1).toString(), 'Sun Jan 31 2016 13:07:17 GMT+0200 (EET)');
   t.end();
 });
+
+test('isWeekendDay', function (t) {
+  t.ok(teatime.isWeekendDay(0));
+  t.notOk(teatime.isWeekendDay(1));
+  t.notOk(teatime.isWeekendDay(2));
+  t.notOk(teatime.isWeekendDay(3));
+  t.notOk(teatime.isWeekendDay(4));
+  t.notOk(teatime.isWeekendDay(5));
+  t.ok(teatime.isWeekendDay(6));
+  t.end();
+});
+
+test('isWeekendDate', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isWeekendDate(d));
+  t.notOk(teatime.isWeekendDate(teatime.addDays(d, 1))); // Tue
+  t.notOk(teatime.isWeekendDate(teatime.addDays(d, 2))); // Wed
+  t.notOk(teatime.isWeekendDate(teatime.addDays(d, 3))); // Thu
+  t.notOk(teatime.isWeekendDate(teatime.addDays(d, 4))); // Fri
+  t.ok(teatime.isWeekendDate(teatime.addDays(d, 5))); // Sat
+  t.ok(teatime.isWeekendDate(teatime.addDays(d, 6))); // Sun
+  t.end();
+});
+
+test('isWorkDay', function (t) {
+  t.notOk(teatime.isWorkDay(0));
+  t.ok(teatime.isWorkDay(1));
+  t.ok(teatime.isWorkDay(2));
+  t.ok(teatime.isWorkDay(3));
+  t.ok(teatime.isWorkDay(4));
+  t.ok(teatime.isWorkDay(5));
+  t.notOk(teatime.isWorkDay(6));
+  t.end();
+});
+
+test('isWorkDate', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.ok(teatime.isWorkDate(d));
+  t.ok(teatime.isWorkDate(teatime.addDays(d, 1))); // Tue
+  t.ok(teatime.isWorkDate(teatime.addDays(d, 2))); // Wed
+  t.ok(teatime.isWorkDate(teatime.addDays(d, 3))); // Thu
+  t.ok(teatime.isWorkDate(teatime.addDays(d, 4))); // Fri
+  t.notOk(teatime.isWorkDate(teatime.addDays(d, 5))); // Sat
+  t.notOk(teatime.isWorkDate(teatime.addDays(d, 6))); // Sun
+  t.end();
+});
+
+test('setWeekendDays', function (t) {
+  teatime.setWeekendDays([1, 3, 5]);
+  t.notOk(teatime.isWeekendDay(0));
+  t.ok(teatime.isWeekendDay(1));
+  t.notOk(teatime.isWeekendDay(2));
+  t.ok(teatime.isWeekendDay(3));
+  t.notOk(teatime.isWeekendDay(4));
+  t.ok(teatime.isWeekendDay(5));
+  t.notOk(teatime.isWeekendDay(6));
+
+  teatime.setWeekendDays([6, 0]);
+  t.ok(teatime.isWeekendDay(0));
+  t.notOk(teatime.isWeekendDay(1));
+  t.notOk(teatime.isWeekendDay(2));
+  t.notOk(teatime.isWeekendDay(3));
+  t.notOk(teatime.isWeekendDay(4));
+  t.notOk(teatime.isWeekendDay(5));
+  t.ok(teatime.isWeekendDay(6));
+  t.end();
+});
