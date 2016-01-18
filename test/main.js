@@ -91,6 +91,45 @@ test('differenceInDays', function (t) {
   t.end();
 });
 
+test('differenceInHours', function (t) {
+  var d = new Date();
+  var date = teatime.addDays(d, 1);
+  t.equal(teatime.differenceInHours(d, date), 24);
+
+  date = teatime.addHours(date, 1);
+  t.equal(teatime.differenceInHours(d, date), 25);
+
+  date = teatime.addMinutes(date, 30);
+  t.equal(teatime.differenceInHours(d, date), 25);
+
+  t.end();
+});
+
+test('differenceInMinutes', function (t) {
+  var d = new Date();
+  var date = teatime.addDays(d, 1);
+  t.equal(teatime.differenceInMinutes(d, date), 24 * 60);
+
+  date = teatime.addMinutes(date, 30);
+  t.equal(teatime.differenceInMinutes(d, date), 24 * 60 + 30);
+
+  t.end();
+});
+
+test('differenceInSeconds', function (t) {
+  var d = new Date();
+  var date = teatime.addDays(d, 1);
+  t.equal(teatime.differenceInSeconds(d, date), 24 * 60 * 60);
+
+  date = teatime.addMinutes(date, 30);
+  t.equal(teatime.differenceInSeconds(d, date), 24 * 60 * 60 + 30 * 60);
+
+  date = teatime.addSeconds(date, -1);
+  t.equal(teatime.differenceInSeconds(d, date), 24 * 60 * 60 + 30 * 60 - 1);
+
+  t.end();
+});
+
 test('isSameDay', function (t) {
   var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   t.ok(teatime.isSameDay(d, teatime.addHours(d, 1)));

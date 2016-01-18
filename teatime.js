@@ -28,6 +28,24 @@ var teatime = {
     return Math.floor((utc2 - utc1) / constants.MS_IN_DAY);
   },
 
+  differenceInHours: function(d1, d2) {
+    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate(), d1.getHours());
+    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate(), d2.getHours());
+    return Math.floor((utc2 - utc1) / constants.MS_IN_HOUR);
+  },
+
+  differenceInMinutes: function(d1, d2) {
+    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate(), d1.getHours(), d1.getMinutes());
+    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate(), d2.getHours(), d2.getMinutes());
+    return Math.floor((utc2 - utc1) / constants.MS_IN_MINUTE);
+  },
+
+  differenceInSeconds: function(d1, d2) {
+    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate(), d1.getHours(), d1.getMinutes(), d1.getSeconds());
+    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate(), d2.getHours(), d2.getMinutes(), d2.getSeconds());
+    return Math.floor((utc2 - utc1) / constants.MS_IN_SECOND);
+  },
+
   addDays: function (d, days) {
     return teatime.addMilliseconds(d, days * constants.MS_IN_DAY);
   },
