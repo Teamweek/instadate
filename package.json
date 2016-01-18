@@ -2,7 +2,7 @@
   "name": "teatime",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "teatime.js",
   "scripts": {
     "test": "node test/main.js | tap-spec"
   },
