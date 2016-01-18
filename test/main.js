@@ -117,3 +117,9 @@ test('equal', function (t) {
   t.notOk(teatime.equal(new Date(), teatime.addMilliseconds(new Date(), 1)));
   t.end();
 });
+
+test('dateString', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)')
+  t.equal(teatime.dateString(d), 'Mon Jan 18 2016');
+  t.end();
+});

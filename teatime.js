@@ -61,7 +61,11 @@ var teatime = {
 
   equal: function (d1, d2) {
     return !(d1 - d2);
-  }
+  },
+
+  dateString: function(date) {
+    return date.toString().slice(0, 15);
+  },
 
 };
 
