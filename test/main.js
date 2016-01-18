@@ -133,3 +133,15 @@ test('min & max', function (t) {
   t.equal(teatime.max(d2, d1), d1);
   t.end();
 });
+
+test('firstDateInMonth', function (t) {
+  var d1 = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(teatime.firstDateInMonth(d1).toString(), 'Fri Jan 01 2016 13:07:17 GMT+0200 (EET)');
+  t.end();
+});
+
+test('lastDateInMonth', function (t) {
+  var d1 = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(teatime.lastDateInMonth(d1).toString(), 'Sun Jan 31 2016 13:07:17 GMT+0200 (EET)');
+  t.end();
+});

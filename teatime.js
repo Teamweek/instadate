@@ -75,6 +75,18 @@ var teatime = {
     return d1 > d2 ? d1 : d2;
   },
 
+  firstDateInMonth: function (d) {
+    var date = new Date(d);
+    date.setDate(1);
+    return date;
+  },
+
+  lastDateInMonth: function (d) {
+    var date = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+    date.setHours(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds());
+    return date;
+  },
+
 };
 
 module.exports = teatime;
