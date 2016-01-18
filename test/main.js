@@ -2,7 +2,7 @@ var test = require('tape');
 var teatime = require('../teatime.js');
 
 test('sanity', function (t) {
-  t.equal(true, true);
+  t.ok(true, 'I am sane');
   t.end();
 });
 
@@ -97,5 +97,23 @@ test('isSameDay', function (t) {
   t.ok(teatime.isSameDay(d, teatime.addHours(d, 10)));
   t.ok(teatime.isSameDay(d, teatime.noon(d)));
   t.notOk(teatime.isSameDay(d, teatime.addDays(d, 1)));
+  t.end();
+});
+
+test('dates array', function (t) {
+  var start = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)')
+    , end = teatime.noon(new Date('Mon Jan 21 2016 13:07:17 GMT+0200 (EET)'));
+  var dates = teatime.dates(start, end);
+  t.equal(dates.length, 3);
+  t.ok(teatime.equal(dates[0], start));
+  t.equal(dates[1].toString(), teatime.addDays(start, 1).toString());
+  t.equal(dates[2].toString(), teatime.addDays(start, 2).toString());
+  t.end();
+});
+
+test('equal', function (t) {
+  t.notEqual(new Date(), new Date());
+  t.ok(teatime.equal(new Date(), new Date()));
+  t.notOk(teatime.equal(new Date(), teatime.addMilliseconds(new Date(), 1)));
   t.end();
 });

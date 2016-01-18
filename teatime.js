@@ -48,6 +48,19 @@ var teatime = {
     return a.getDate() === b.getDate() &&
       a.getMonth() === b.getMonth() &&
       a.getFullYear() === b.getFullYear();
+  },
+
+  dates: function(start, end) {
+    var result = []
+      , diff = teatime.differenceInDays(start, end);
+    for (var i = 0; i < diff; i++) {
+      result.push(teatime.addDays(start, i));
+    }
+    return result;
+  },
+
+  equal: function (d1, d2) {
+    return !(d1 - d2);
   }
 
 };
