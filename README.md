@@ -1,6 +1,6 @@
 # Teatime
 
-A minimal *high performance* date library for Node.js and Browser. Use it to compare and manipulate dates.
+A minimal high performance date library for Node.js and Browser. Use it to compare and manipulate dates.
 
 ## Motivation behind Teatime
 
@@ -9,7 +9,7 @@ Current popular date libraries put a lot of effort into doing a lot of things co
 Use Teatime when you need to run thousands of date manipulations or comparisons per second  .
 
 **Teatime..**
-* is **fast** (10 - 1000 times faster then moment)
+* is **fast** (10 - 1000 times faster than moment)
 * is **small** (just look at the source)
 * does **not** care about **timezones** (use moment instead)
 * is **immutable** (Teatime will always return new date objects and never modify the given ones)
