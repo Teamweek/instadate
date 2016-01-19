@@ -193,6 +193,8 @@ var teatime = {
     return teatime.daysInPeriod(firstDay, length, constants.WORK_DAYS);
   },
 
+  /* isAfter & isBefore */
+
   isYearAfter: function (a, b) {
     return a.getFullYear() > b.getFullYear();
   },
@@ -219,6 +221,29 @@ var teatime = {
     return teatime.isDayAfter(b, a);
   },
 
+  /* isBetween */
+
+  isYearBetween: function (d, start, end) {
+    return isBetween(d, start, end, teatime.isYearBefore, teatime.isYearAfter);
+  },
+
+  isMonthBetween: function (d, start, end) {
+    return isBetween(d, start, end, teatime.isMonthBefore, teatime.isMonthAfter);
+  },
+
+  isDayBetween: function (d, start, end) {
+    return isBetween(d, start, end, teatime.isDayBefore, teatime.isDayAfter);
+  },
+
+};
+
+function isBetween(d, start, end, beforeFn, afterFn) {
+  if (start > end) {
+    var temp = end;
+    end = start;
+    start = temp;
+  }
+  return beforeFn(start, d) && afterFn(end, d);
 };
 
 module.exports = teatime;

@@ -376,3 +376,51 @@ test('isDayBefore', function (t) {
 
   t.end();
 });
+
+test('isYearBetween', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var d1 = new Date('Wed Jan 18 2017 13:07:17 GMT+0200 (EET)');
+  var d2 = new Date('Sun Jan 18 2015 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isYearBetween(d, d, d));
+  t.notOk(teatime.isYearBetween(d, d1, d));
+  t.notOk(teatime.isYearBetween(d, d, d2));
+
+  t.ok(teatime.isYearBetween(d, d1, d2));
+  t.ok(teatime.isYearBetween(d, d2, d1));
+
+  t.notOk(teatime.isYearBetween(d, d1, teatime.addDays(d, 60)));
+
+  t.end();
+});
+
+test('isMonthBetween', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var d1 = new Date('Fri Dec 18 2015 13:07:17 GMT+0200 (EET)');
+  var d2 = new Date('Thu Feb 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isMonthBetween(d, d, d));
+  t.notOk(teatime.isMonthBetween(d, d1, d));
+  t.notOk(teatime.isMonthBetween(d, d, d2));
+
+  t.ok(teatime.isMonthBetween(d, d1, d2));
+  t.ok(teatime.isMonthBetween(d, d2, d1));
+
+  t.notOk(teatime.isMonthBetween(d, d1, teatime.addDays(d, 6)));
+
+  t.end();
+});
+
+test('isDayBetween', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var d1 = new Date('Sun Jan 17 2016 13:07:17 GMT+0200 (EET)');
+  var d2 = new Date('Tue Jan 19 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isDayBetween(d, d, d));
+  t.notOk(teatime.isDayBetween(d, d1, d));
+  t.notOk(teatime.isDayBetween(d, d, d2));
+
+  t.ok(teatime.isDayBetween(d, d1, d2));
+  t.ok(teatime.isDayBetween(d, d2, d1));
+
+  t.notOk(teatime.isDayBetween(d, d1, teatime.addHours(d, 6)));
+
+  t.end();
+});
