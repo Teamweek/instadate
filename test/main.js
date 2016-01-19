@@ -303,3 +303,70 @@ test('workDaysInPeriod', function (t) {
   t.equal(teatime.workDaysInPeriod(1, 5), 5);
   t.end();
 });
+
+test('isYearAfter', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isYearAfter(d, d));
+
+  t.notOk(teatime.isYearAfter(teatime.addDays(d, 100), d));
+
+  t.ok(teatime.isYearAfter(teatime.addDays(d, 365), d));
+  t.notOk(teatime.isYearAfter(teatime.addDays(d, -365), d));
+
+  t.end();
+});
+
+test('isYearBefore', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isYearBefore(d, d));
+  t.notOk(teatime.isYearBefore(d, teatime.addDays(d, 100)));
+  t.ok(teatime.isYearBefore(d, teatime.addDays(d, 365)));
+  t.notOk(teatime.isYearBefore(d, teatime.addDays(d, -365)));
+
+  t.end();
+});
+
+test('isMonthAfter', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isMonthAfter(d, d));
+  t.ok(teatime.isMonthAfter(d, new Date('Mon Jan 19 2015 13:07:17 GMT+0200 (EET)')));
+  t.notOk(teatime.isMonthAfter(d, new Date('Wed Jan 18 2017 13:07:17 GMT+0200 (EET)')));
+  t.notOk(teatime.isMonthAfter(d, teatime.addDays(d, -1)));
+  t.ok(teatime.isMonthAfter(teatime.addDays(d, 25), d));
+  t.end();
+});
+
+test('isMonthBefore', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isMonthBefore(d, d));
+  t.notOk(teatime.isMonthBefore(d, new Date('Mon Jan 19 2015 13:07:17 GMT+0200 (EET)')));
+  t.ok(teatime.isMonthBefore(d, new Date('Wed Jan 18 2017 13:07:17 GMT+0200 (EET)')));
+  t.notOk(teatime.isMonthBefore(d, teatime.addDays(d, -1)));
+  t.notOk(teatime.isMonthBefore(teatime.addDays(d, 25), d));
+  t.end();
+});
+
+test('isDayAfter', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isDayAfter(d, d));
+  t.ok(teatime.isDayAfter(d, new Date('Mon Jan 19 2015 13:07:17 GMT+0200 (EET)')));
+  t.notOk(teatime.isDayAfter(new Date('Mon Jan 19 2015 13:07:17 GMT+0200 (EET)'), d));
+  t.ok(teatime.isDayAfter(d, teatime.addDays(d, -1)));
+  t.notOk(teatime.isDayAfter(d, teatime.addHours(d, -13)));
+  t.ok(teatime.isDayAfter(d, teatime.addHours(d, -14)));
+  t.notOk(teatime.isDayAfter(d, teatime.addDays(d, 1000)));
+
+  t.end();
+});
+
+test('isDayBefore', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.notOk(teatime.isDayBefore(d, d));
+  t.notOk(teatime.isDayBefore(d, new Date('Mon Jan 19 2015 13:07:17 GMT+0200 (EET)')));
+  t.notOk(teatime.isDayBefore(d, teatime.addDays(d, -1)));
+  t.ok(teatime.isDayBefore(d, teatime.addHours(d, 11)));
+  t.notOk(teatime.isDayBefore(d, teatime.addHours(d, -14)));
+  t.ok(teatime.isDayBefore(d, teatime.addDays(d, 1000)));
+
+  t.end();
+});

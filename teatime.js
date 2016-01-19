@@ -24,6 +24,8 @@ var teatime = {
     return date;
   },
 
+  /* Diffrence between dates */
+
   differenceInDays: function (d1, d2) {
     return trunc((d2 - d1) / constants.MS_IN_DAY);
   },
@@ -50,6 +52,8 @@ var teatime = {
     return teatime.workDaysInPeriod(d1.getDay(), period)
   },
 
+  /* Adding time to dates */
+
   addDays: function (d, days) {
     return teatime.addMilliseconds(d, days * constants.MS_IN_DAY);
   },
@@ -70,6 +74,12 @@ var teatime = {
     return new Date(d.getTime() + ms);
   },
 
+  /* Comparison */
+
+  isSameYear: function (a, b) {
+    return a.getFullYear() === b.getFullYear();
+  },
+
   isSameMonth: function (a, b) {
     return a.getMonth() === b.getMonth() &&
       a.getFullYear() === b.getFullYear();
@@ -81,6 +91,20 @@ var teatime = {
       a.getFullYear() === b.getFullYear();
   },
 
+  equal: function (d1, d2) {
+    return !(d1 - d2);
+  },
+
+  min: function (d1, d2) {
+    return d1 < d2 ? d1 : d2;
+  },
+
+  max: function (d1, d2) {
+    return d1 > d2 ? d1 : d2;
+  },
+
+  /* Other */
+
   dates: function(start, end) {
     var result = []
       , diff = teatime.differenceInDays(start, end);
@@ -90,20 +114,8 @@ var teatime = {
     return result;
   },
 
-  equal: function (d1, d2) {
-    return !(d1 - d2);
-  },
-
   dateString: function(date) {
     return date.toString().slice(0, 15);
-  },
-
-  min: function (d1, d2) {
-    return d1 < d2 ? d1 : d2;
-  },
-
-  max: function (d1, d2) {
-    return d1 > d2 ? d1 : d2;
   },
 
   firstDateInMonth: function (d) {
@@ -179,6 +191,32 @@ var teatime = {
 
   workDaysInPeriod: function (firstDay, length) {
     return teatime.daysInPeriod(firstDay, length, constants.WORK_DAYS);
+  },
+
+  isYearAfter: function (a, b) {
+    return a.getFullYear() > b.getFullYear();
+  },
+
+  isMonthAfter: function (a, b) {
+    return teatime.isYearAfter(a, b) ||
+      a.getMonth() > b.getMonth() && teatime.isSameYear(a, b);
+  },
+
+  isDayAfter: function (a, b) {
+    return teatime.isMonthAfter(a, b) ||
+      a.getDate() > b.getDate() && teatime.isSameMonth(a, b);
+  },
+
+  isYearBefore: function (a, b) {
+    return teatime.isYearAfter(b, a);
+  },
+
+  isMonthBefore: function (a, b) {
+    return teatime.isMonthAfter(b, a);
+  },
+
+  isDayBefore: function (a, b) {
+    return teatime.isDayAfter(b, a);
   },
 
 };
