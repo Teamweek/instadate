@@ -172,11 +172,17 @@ test('dateString', function (t) {
   t.end();
 });
 
-test('min & max', function (t) {
+test('min', function (t) {
   var d1 = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   var d2 = new Date('Mon Jan 18 2016 12:07:17 GMT+0200 (EET)');
   t.equal(teatime.min(d1, d2), d2);
   t.equal(teatime.min(d2, d1), d2);
+  t.end();
+});
+
+test('max', function (t) {
+  var d1 = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var d2 = new Date('Mon Jan 18 2016 12:07:17 GMT+0200 (EET)');
   t.equal(teatime.max(d1, d2), d1);
   t.equal(teatime.max(d2, d1), d1);
   t.end();
