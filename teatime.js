@@ -156,7 +156,6 @@ var teatime = {
       var absShift = Math.abs(firstDay + i);
       var extra = Math.ceil(absShift / 7) * 7;
       var day = (extra + firstDay + i) % 7;
-      console.log(day);
       if (days.indexOf(day) !== -1) {
         total++;
       }
