@@ -73,21 +73,23 @@ test('adding milliseconds', function (t) {
   t.end();
 });
 
-test('adding milliseconds', function (t) {
-  var d = teatime.noon();
-  var added = teatime.addMilliseconds(d, 1);
-  t.equal(added.getMilliseconds(), 1);
-
-  var subtracted = teatime.addMilliseconds(d, -1);
-  t.equal(subtracted.getMilliseconds(), 999);
-  t.end();
-});
-
 test('differenceInDays', function (t) {
   var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var d2 = new Date('Thu Jan 21 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(teatime.differenceInDays(d, d2), 3);
+  t.equal(teatime.differenceInDays(d, teatime.addDays(d, 1)), 1);
   t.equal(teatime.differenceInDays(d, teatime.addDays(d, 1)), 1);
   t.equal(teatime.differenceInDays(d, teatime.addDays(d, 1000)), 1000);
   t.equal(teatime.differenceInDays(d, teatime.addDays(d, -1)), -1);
+  t.end();
+});
+
+test('differenceInWeekendDays', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(teatime.differenceInWeekendDays(d, teatime.addDays(d, 1)), 0);
+  t.equal(teatime.differenceInWeekendDays(d, teatime.addDays(d, 14)), 4);
+  t.equal(teatime.differenceInWeekendDays(d, teatime.addDays(d, -1)), 0);
+  t.equal(teatime.differenceInWeekendDays(d, teatime.addDays(d, 0)), 0);
   t.end();
 });
 
@@ -99,8 +101,8 @@ test('differenceInHours', function (t) {
   date = teatime.addHours(date, 1);
   t.equal(teatime.differenceInHours(d, date), 25);
 
-  date = teatime.addMinutes(date, 30);
-  t.equal(teatime.differenceInHours(d, date), 25);
+  t.equal(teatime.differenceInHours(d, teatime.addMinutes(date, 25)), 25);
+  t.equal(teatime.differenceInHours(d, teatime.addMinutes(date, 35)), 25);
 
   t.end();
 });
@@ -149,12 +151,11 @@ test('isSameDay', function (t) {
 
 test('dates array', function (t) {
   var start = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)')
-    , end = teatime.noon(new Date('Mon Jan 21 2016 13:07:17 GMT+0200 (EET)'));
+    , end = teatime.noon(new Date('Thu Jan 21 2016 13:07:17 GMT+0200 (EET)'));
   var dates = teatime.dates(start, end);
-  t.equal(dates.length, 3);
+  t.equal(dates.length, 2);
   t.ok(teatime.equal(dates[0], start));
   t.equal(dates[1].toString(), teatime.addDays(start, 1).toString());
-  t.equal(dates[2].toString(), teatime.addDays(start, 2).toString());
   t.end();
 });
 
@@ -262,11 +263,27 @@ test('setWeekendDays', function (t) {
 
 test('daysInPeriod', function (t) {
   var date = new Date();
-  var days = teatime.daysInPeriod(date, 10, [0, 1, 2, 3, 4, 5, 6]);
+  var days = teatime.daysInPeriod(date, 10);
   t.equal(days, 10);
 
-  var days = teatime.daysInPeriod(0, 10, [0, 1]);
+  days = teatime.daysInPeriod(date, -10);
+  t.equal(days, 10);
+
+  days = teatime.daysInPeriod(1, 2);
+  t.equal(days, 2);
+
+  days = teatime.daysInPeriod(4, -2);
+  t.equal(days, 2);
+
+  days = teatime.daysInPeriod(0, 10, [0, 1]);
   t.equal(days, 4);
+
+  days = teatime.daysInPeriod(0, -70, [0, 1]);
+  t.equal(days, 20);
+
+  days = teatime.daysInPeriod(0, -10, [0, 1]);
+  t.equal(days, 3);
+
   t.end();
 });
 
@@ -275,6 +292,7 @@ test('weekendDaysInPeriod', function (t) {
   t.equal(teatime.weekendDaysInPeriod(0, 14), 4);
   t.equal(teatime.weekendDaysInPeriod(3, 14), 4);
   t.equal(teatime.weekendDaysInPeriod(1, 5), 0);
+  t.equal(teatime.weekendDaysInPeriod(2, -5), 2);
   t.end();
 });
 

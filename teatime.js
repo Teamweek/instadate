@@ -1,4 +1,5 @@
 var difference = require('lodash.difference');
+var trunc = require('math-trunc');
 
 var constants = {
   MS_IN_DAY: 1000 * 60 * 60 * 24,
@@ -7,6 +8,7 @@ var constants = {
   MS_IN_SECOND: 1000,
   WEEKEND_DAYS: [6, 0],
   WORK_DAYS: [1, 2, 3, 4, 5],
+  ALL_DAYS: [0, 1, 2, 3, 4, 5, 6],
 }
 
 var teatime = {
@@ -22,28 +24,30 @@ var teatime = {
     return date;
   },
 
-  differenceInDays: function(d1, d2) {
-    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate());
-    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate());
-    return Math.floor((utc2 - utc1) / constants.MS_IN_DAY);
+  differenceInDays: function (d1, d2) {
+    return trunc((d2 - d1) / constants.MS_IN_DAY);
   },
 
-  differenceInHours: function(d1, d2) {
-    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate(), d1.getHours());
-    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate(), d2.getHours());
-    return Math.floor((utc2 - utc1) / constants.MS_IN_HOUR);
+  differenceInHours: function (d1, d2) {
+    return trunc((d2 - d1) / constants.MS_IN_HOUR);
   },
 
-  differenceInMinutes: function(d1, d2) {
-    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate(), d1.getHours(), d1.getMinutes());
-    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate(), d2.getHours(), d2.getMinutes());
-    return Math.floor((utc2 - utc1) / constants.MS_IN_MINUTE);
+  differenceInMinutes: function (d1, d2) {
+    return trunc((d2 - d1) / constants.MS_IN_MINUTE);
   },
 
-  differenceInSeconds: function(d1, d2) {
-    var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate(), d1.getHours(), d1.getMinutes(), d1.getSeconds());
-    var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate(), d2.getHours(), d2.getMinutes(), d2.getSeconds());
-    return Math.floor((utc2 - utc1) / constants.MS_IN_SECOND);
+  differenceInSeconds: function (d1, d2) {
+    return trunc((d2 - d1) / constants.MS_IN_SECOND);
+  },
+
+  differenceInWeekendDays: function (d1, d2) {
+    var period = teatime.differenceInDays(d1, d2);
+    return teatime.weekendDaysInPeriod(d1.getDay(), period)
+  },
+
+  differenceInWorkDays: function (d1, d2) {
+    var period = teatime.differenceInDays(d1, d2);
+    return teatime.workDaysInPeriod(d1.getDay(), period)
   },
 
   addDays: function (d, days) {
@@ -142,10 +146,29 @@ var teatime = {
     if (firstDay instanceof Date) {
       firstDay = firstDay.getDay();
     }
-    var total = 0;
-    for (var i = 0; i < length; i++) {
-      if (days.indexOf((firstDay + i) % 7) !== -1) {
+    if (!days) {
+      days = constants.ALL_DAYS;
+    }
+    var total = 0
+      , direction = length >= 0 ? 1 : -1;
+
+    function check(i) {
+      var absShift = Math.abs(firstDay + i);
+      var extra = Math.ceil(absShift / 7) * 7;
+      var day = (extra + firstDay + i) % 7;
+      console.log(day);
+      if (days.indexOf(day) !== -1) {
         total++;
+      }
+    }
+
+    if (length >= 0) {
+      for (var i = 0; i < length; i++) {
+        check(i);
+      }
+    } else {
+      for (var i = 0; i > length; i--) {
+        check(i);
       }
     }
     return total;
