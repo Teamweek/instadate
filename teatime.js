@@ -66,6 +66,11 @@ var teatime = {
     return new Date(d.getTime() + ms);
   },
 
+  isSameMonth: function (a, b) {
+    return a.getMonth() === b.getMonth() &&
+      a.getFullYear() === b.getFullYear();
+  },
+
   isSameDay: function (a, b) {
     return a.getDate() === b.getDate() &&
       a.getMonth() === b.getMonth() &&

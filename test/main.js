@@ -130,6 +130,14 @@ test('differenceInSeconds', function (t) {
   t.end();
 });
 
+test('isSameMonth', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.ok(teatime.isSameMonth(d, teatime.addDays(d, 1)));
+  t.ok(teatime.isSameMonth(d, teatime.addDays(d, 13)));
+  t.notOk(teatime.isSameMonth(d, teatime.addDays(d, 14)));
+  t.end();
+});
+
 test('isSameDay', function (t) {
   var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   t.ok(teatime.isSameDay(d, teatime.addHours(d, 1)));
