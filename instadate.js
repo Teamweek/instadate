@@ -237,6 +237,10 @@ var instadate = {
     return isBetween(d, start, end, instadate.isDayBefore, instadate.isDayAfter);
   },
 
+  isoWeekDay: function (d) {
+    return d.getDay() || 7;
+  },
+
 };
 
 function utc(d) {

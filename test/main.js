@@ -424,3 +424,15 @@ test('isDayBetween', function (t) {
 
   t.end();
 });
+
+test('isoWeekDay', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(instadate.isoWeekDay(d), 1);
+  t.equal(instadate.isoWeekDay(instadate.addDays(d, 1)), 2);
+  t.equal(instadate.isoWeekDay(instadate.addDays(d, 2)), 3);
+  t.equal(instadate.isoWeekDay(instadate.addDays(d, 3)), 4);
+  t.equal(instadate.isoWeekDay(instadate.addDays(d, 5)), 6);
+  t.equal(instadate.isoWeekDay(instadate.addDays(d, 6)), 7);
+  t.equal(instadate.isoWeekDay(instadate.addDays(d, 7)), 1);
+  t.end();
+})
