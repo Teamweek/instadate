@@ -1,21 +1,21 @@
 {
-  "name": "teatime",
-  "version": "1.0.0",
+  "name": "instadate",
+  "version": "0.1.0",
   "description": "",
-  "main": "teatime.js",
+  "main": "instadate.js",
   "scripts": {
     "test": "node test/main.js | faucet"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Teamweek/teatime.git"
+    "url": "git+https://github.com/Teamweek/instadate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Teamweek/teatime/issues"
+    "url": "https://github.com/Teamweek/instadate/issues"
   },
-  "homepage": "https://github.com/Teamweek/teatime#readme",
+  "homepage": "https://github.com/Teamweek/instadate#readme",
   "devDependencies": {
     "tap-spec": "^4.1.1",
     "tape": "^4.4.0",

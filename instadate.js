@@ -11,7 +11,7 @@ var constants = {
   ALL_DAYS: [0, 1, 2, 3, 4, 5, 6],
 }
 
-var teatime = {
+var instadate = {
 
   noon: function(d) {
     var date;
@@ -43,31 +43,31 @@ var teatime = {
   },
 
   differenceInWeekendDays: function (d1, d2) {
-    var period = teatime.differenceInDays(d1, d2);
-    return teatime.weekendDaysInPeriod(d1.getDay(), period)
+    var period = instadate.differenceInDays(d1, d2);
+    return instadate.weekendDaysInPeriod(d1.getDay(), period)
   },
 
   differenceInWorkDays: function (d1, d2) {
-    var period = teatime.differenceInDays(d1, d2);
-    return teatime.workDaysInPeriod(d1.getDay(), period)
+    var period = instadate.differenceInDays(d1, d2);
+    return instadate.workDaysInPeriod(d1.getDay(), period)
   },
 
   /* Adding time to dates */
 
   addDays: function (d, days) {
-    return teatime.addMilliseconds(d, days * constants.MS_IN_DAY);
+    return instadate.addMilliseconds(d, days * constants.MS_IN_DAY);
   },
 
   addHours: function(d, hours) {
-    return teatime.addMilliseconds(d, hours * constants.MS_IN_HOUR);
+    return instadate.addMilliseconds(d, hours * constants.MS_IN_HOUR);
   },
 
   addMinutes: function(d, minutes) {
-    return teatime.addMilliseconds(d, minutes * constants.MS_IN_MINUTE);
+    return instadate.addMilliseconds(d, minutes * constants.MS_IN_MINUTE);
   },
 
   addSeconds: function (d, seconds) {
-    return teatime.addMilliseconds(d, seconds * constants.MS_IN_SECOND);
+    return instadate.addMilliseconds(d, seconds * constants.MS_IN_SECOND);
   },
 
   addMilliseconds: function (d, ms) {
@@ -107,9 +107,9 @@ var teatime = {
 
   dates: function(start, end) {
     var result = []
-      , diff = teatime.differenceInDays(start, end);
+      , diff = instadate.differenceInDays(start, end);
     for (var i = 0; i < diff; i++) {
-      result.push(teatime.addDays(start, i));
+      result.push(instadate.addDays(start, i));
     }
     return result;
   },
@@ -135,15 +135,15 @@ var teatime = {
   },
 
   isWorkDay: function (day) {
-    return !teatime.isWeekendDay(day);
+    return !instadate.isWeekendDay(day);
   },
 
   isWeekendDate: function (date) {
-    return teatime.isWeekendDay(date.getDay());
+    return instadate.isWeekendDay(date.getDay());
   },
 
   isWorkDate: function (date) {
-    return !teatime.isWeekendDate(date);
+    return !instadate.isWeekendDate(date);
   },
 
   setWeekendDays: function (days) {
@@ -186,11 +186,11 @@ var teatime = {
   },
 
   weekendDaysInPeriod: function (firstDay, length) {
-    return teatime.daysInPeriod(firstDay, length, constants.WEEKEND_DAYS);
+    return instadate.daysInPeriod(firstDay, length, constants.WEEKEND_DAYS);
   },
 
   workDaysInPeriod: function (firstDay, length) {
-    return teatime.daysInPeriod(firstDay, length, constants.WORK_DAYS);
+    return instadate.daysInPeriod(firstDay, length, constants.WORK_DAYS);
   },
 
   /* isAfter & isBefore */
@@ -200,39 +200,39 @@ var teatime = {
   },
 
   isMonthAfter: function (a, b) {
-    return teatime.isYearAfter(a, b) ||
-      a.getMonth() > b.getMonth() && teatime.isSameYear(a, b);
+    return instadate.isYearAfter(a, b) ||
+      a.getMonth() > b.getMonth() && instadate.isSameYear(a, b);
   },
 
   isDayAfter: function (a, b) {
-    return teatime.isMonthAfter(a, b) ||
-      a.getDate() > b.getDate() && teatime.isSameMonth(a, b);
+    return instadate.isMonthAfter(a, b) ||
+      a.getDate() > b.getDate() && instadate.isSameMonth(a, b);
   },
 
   isYearBefore: function (a, b) {
-    return teatime.isYearAfter(b, a);
+    return instadate.isYearAfter(b, a);
   },
 
   isMonthBefore: function (a, b) {
-    return teatime.isMonthAfter(b, a);
+    return instadate.isMonthAfter(b, a);
   },
 
   isDayBefore: function (a, b) {
-    return teatime.isDayAfter(b, a);
+    return instadate.isDayAfter(b, a);
   },
 
   /* isBetween */
 
   isYearBetween: function (d, start, end) {
-    return isBetween(d, start, end, teatime.isYearBefore, teatime.isYearAfter);
+    return isBetween(d, start, end, instadate.isYearBefore, instadate.isYearAfter);
   },
 
   isMonthBetween: function (d, start, end) {
-    return isBetween(d, start, end, teatime.isMonthBefore, teatime.isMonthAfter);
+    return isBetween(d, start, end, instadate.isMonthBefore, instadate.isMonthAfter);
   },
 
   isDayBetween: function (d, start, end) {
-    return isBetween(d, start, end, teatime.isDayBefore, teatime.isDayAfter);
+    return isBetween(d, start, end, instadate.isDayBefore, instadate.isDayAfter);
   },
 
 };
@@ -246,4 +246,4 @@ function isBetween(d, start, end, beforeFn, afterFn) {
   return beforeFn(start, d) && afterFn(end, d);
 };
 
-module.exports = teatime;
+module.exports = instadate;
