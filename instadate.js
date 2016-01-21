@@ -13,7 +13,9 @@ var constants = {
 
 var instadate = {
 
-  noon: function(d) {
+  utc: utc,
+
+  noon: function (d) {
     var date;
     if (d) {
       date = new Date(d);
@@ -27,19 +29,19 @@ var instadate = {
   /* Difference between dates */
 
   differenceInDays: function (d1, d2) {
-    return trunc((d2 - d1) / constants.MS_IN_DAY);
+    return trunc((utc(d2) - utc(d1)) / constants.MS_IN_DAY);
   },
 
   differenceInHours: function (d1, d2) {
-    return trunc((d2 - d1) / constants.MS_IN_HOUR);
+    return trunc((utc(d2) - utc(d1)) / constants.MS_IN_HOUR);
   },
 
   differenceInMinutes: function (d1, d2) {
-    return trunc((d2 - d1) / constants.MS_IN_MINUTE);
+    return trunc((utc(d2) - utc(d1)) / constants.MS_IN_MINUTE);
   },
 
   differenceInSeconds: function (d1, d2) {
-    return trunc((d2 - d1) / constants.MS_IN_SECOND);
+    return trunc((utc(d2) - utc(d1)) / constants.MS_IN_SECOND);
   },
 
   differenceInWeekendDays: function (d1, d2) {
@@ -236,6 +238,11 @@ var instadate = {
   },
 
 };
+
+function utc(d) {
+  return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(),
+    d.getMinutes(), d.getSeconds(), d.getMilliseconds());
+}
 
 function isBetween(d, start, end, beforeFn, afterFn) {
   if (start > end) {
