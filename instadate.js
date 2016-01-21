@@ -24,7 +24,7 @@ var instadate = {
     return date;
   },
 
-  /* Diffrence between dates */
+  /* Difference between dates */
 
   differenceInDays: function (d1, d2) {
     return trunc((d2 - d1) / constants.MS_IN_DAY);
