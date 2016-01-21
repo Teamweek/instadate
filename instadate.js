@@ -116,8 +116,12 @@ var instadate = {
     return result;
   },
 
-  dateString: function(date) {
+  dateString: function (date) {
     return date.toString().slice(0, 15);
+  },
+
+  isoDateString: function (date) {
+    return date.toISOString().slice(0, 10);
   },
 
   firstDateInMonth: function (d) {

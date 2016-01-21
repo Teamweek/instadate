@@ -435,4 +435,10 @@ test('isoWeekDay', function (t) {
   t.equal(instadate.isoWeekDay(instadate.addDays(d, 6)), 7);
   t.equal(instadate.isoWeekDay(instadate.addDays(d, 7)), 1);
   t.end();
-})
+});
+
+test('isoDateString', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.equal(instadate.isoDateString(d), '2016-01-18');
+  t.end();
+});
