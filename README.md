@@ -16,10 +16,34 @@ Use Instadate when you need to run thousands of date manipulations or comparison
 **Instadate..**
 * is **fast** (10 - 1000 times faster than moment)
 * is **small** (just look at the source)
-* does **not** care about **timezones** (use moment instead)
 * is **immutable** (Instadate will always return new date objects and never modify the given ones)
 
 ## Testing
 ```
 npm test
 ```
+
+**NB! Documentation is a WIP, look at source for all functions**
+
+## API Reference
+
+### `instadate.utc(date)`
+Returns the UTC time in milliseconds.
+
+### `instadate.noon(date)`
+Returns a copy of the date with hours set to 12 and minutes, seconds and milliseconds set to 0.
+
+### `instadate.differenceInDays(from, to)`
+Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
+
+### `instadate.differenceInHours(from, to)`
+Returns the difference in hours (60 minute periods) between two dates. Returned result can be negative.
+
+### `instadate.differenceInDays(from, to)`
+Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
+
+### `instadate.differenceInWeekendDays(from, to)`
+Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
+
+### `instadate.differenceInWorkDays(from, to)`
+Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
