@@ -28,6 +28,10 @@ var instadate = {
 
   /* Difference between dates */
 
+  differenceInDates: function (d1, d2) {
+    return trunc((utcDate(d2) - utcDate(d1)) / constants.MS_IN_DAY);
+  },
+
   differenceInDays: function (d1, d2) {
     return trunc((utc(d2) - utc(d1)) / constants.MS_IN_DAY);
   },
@@ -250,6 +254,10 @@ var instadate = {
 function utc(d) {
   return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(),
     d.getMinutes(), d.getSeconds(), d.getMilliseconds());
+}
+
+function utcDate(d) {
+  return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
 }
 
 function isBetween(d, start, end, beforeFn, afterFn) {

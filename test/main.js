@@ -73,6 +73,14 @@ test('adding milliseconds', function (t) {
   t.end();
 });
 
+test('differenceInDates', function (t) {
+  var d = new Date('Mon Jan 18 2016 23:07:17 GMT+0200 (EET)');
+  t.equal(instadate.differenceInDates(d, d), 0);
+  t.equal(instadate.differenceInDates(d, instadate.addHours(d, 1)), 1);
+  t.equal(instadate.differenceInDates(d, instadate.addHours(d, -24)), -1);
+  t.end();
+});
+
 test('differenceInDays', function (t) {
   var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   var d2 = new Date('Thu Jan 21 2016 13:07:17 GMT+0200 (EET)');
