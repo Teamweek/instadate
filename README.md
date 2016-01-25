@@ -37,59 +37,59 @@ npm test
 
 ## API Reference
 
-### `instadate.utc(date)`
+**`utc(date)`**
 Returns the UTC time in milliseconds.
 
-### `instadate.noon(date)`
+**`noon(date)`**
 Returns a copy of the date with hours set to 12 and minutes, seconds and milliseconds set to 0.
 
-### `instadate.differenceInDays(from, to)`
+**`differenceInDays(from, to)`**
 Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
 
-### `instadate.differenceInHours(from, to)`
+**`differenceInHours(from, to)`**
 Returns the difference in hours (60 minute periods) between two dates. Returned result can be negative.
 
-### `instadate.differenceInDays(from, to)`
+**`differenceInDays(from, to)`**
 Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
 
-### `instadate.differenceInWeekendDays(from, to)`
+**`differenceInWeekendDays(from, to)`**
 Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
 
-### `instadate.differenceInWorkDays(from, to)`
+**`differenceInWorkDays(from, to)`**
 Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
 
-### `instadate.differenceInDates(from, to)`
+**`differenceInDates(from, to)`**
 Similar to `differenceInDays` however counts all dates that fit into the period, not 24 hour periods.
 
-### `instadate.addDays(date, days)`
+**`addDays(date, days)`**
 Returns a cloned date with days added to it, use negative input for subtraction.
 
-### `instadate.addHours(date, hours)`
+**`addHours(date, hours)`**
 Returns a cloned date with hours added to it, use negative input for subtraction.
 
-### `instadate.addMinutes(date, minutes)`
+**`addMinutes(date, minutes)`**
 Returns a cloned date with minutes added to it, use negative input for subtraction.
 
-### `instadate.addSeconds(date, seconds)`
+**`addSeconds(date, seconds)`**
 Returns a cloned date with seconds added to it, use negative input for subtraction.
 
-### `instadate.addMilliseconds(date, milliseconds)`
+**`addMilliseconds(date, milliseconds)`**
 Returns a cloned date with milliseconds added to it, use negative input for subtraction.
 
-### `instadate.isSameYear(date1, date2)`
+**`isSameYear(date1, date2)`**
 Returns if the years are equal
 
-### `instadate.isSameMonth(date1, date2)`
+**`isSameMonth(date1, date2)`**
 Returns if the years and months are equal
 
-### `instadate.isSameDay(date1, date2)`
+**`isSameDay(date1, date2)`**
 Returns if the years, months and dates are equal
 
-### `instadate.equal(date1, date2)`
+**`equal(date1, date2)`**
 Returns if the dates are equal to millisecond precision
 
-### `instadate.min(date1, date2)`
+**`min(date1, date2)`**
 Returns the earliest date
 
-### `instadate.max(date1, date2)`
+**`max(date1, date2)`**
 Returns the latest date
