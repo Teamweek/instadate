@@ -38,58 +38,77 @@ npm test
 ## API Reference
 
 **`utc(date)`**
+
 Returns the UTC time in milliseconds.
 
 **`noon(date)`**
+
 Returns a copy of the date with hours set to 12 and minutes, seconds and milliseconds set to 0.
 
 **`differenceInDays(from, to)`**
+
 Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
 
 **`differenceInHours(from, to)`**
+
 Returns the difference in hours (60 minute periods) between two dates. Returned result can be negative.
 
 **`differenceInDays(from, to)`**
+
 Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
 
 **`differenceInWeekendDays(from, to)`**
+
 Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
 
 **`differenceInWorkDays(from, to)`**
+
 Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
 
 **`differenceInDates(from, to)`**
+
 Similar to `differenceInDays` however counts all dates that fit into the period, not 24 hour periods.
 
 **`addDays(date, days)`**
+
 Returns a cloned date with days added to it, use negative input for subtraction.
 
 **`addHours(date, hours)`**
+
 Returns a cloned date with hours added to it, use negative input for subtraction.
 
 **`addMinutes(date, minutes)`**
+
 Returns a cloned date with minutes added to it, use negative input for subtraction.
 
 **`addSeconds(date, seconds)`**
+
 Returns a cloned date with seconds added to it, use negative input for subtraction.
 
 **`addMilliseconds(date, milliseconds)`**
+
 Returns a cloned date with milliseconds added to it, use negative input for subtraction.
 
 **`isSameYear(date1, date2)`**
+
 Returns if the years are equal
 
 **`isSameMonth(date1, date2)`**
+
 Returns if the years and months are equal
 
 **`isSameDay(date1, date2)`**
+
 Returns if the years, months and dates are equal
 
 **`equal(date1, date2)`**
+
 Returns if the dates are equal to millisecond precision
 
 **`min(date1, date2)`**
+
 Returns the earliest date
 
 **`max(date1, date2)`**
+
 Returns the latest date
