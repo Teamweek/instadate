@@ -112,3 +112,99 @@ Returns the earliest date
 **`max(date1, date2)`**
 
 Returns the latest date
+
+**`dates(start, end)`**
+
+Returns all dates within start and end period. Uses `differenceInDates` internally.
+
+**`dateString(date)`**
+
+Returns the date part of a Date as a string. Example: `Mon Jan 25 2016`.
+
+**`isoDateString(date)`**
+
+Returns the date part of an iso Date as a string. Example: `2016-01-25`.
+
+**`firstDateInMonth(date)`**
+
+Returns the first date of the month.
+
+**`lastDateInMonth(date)`**
+
+Returns the last date of the month.
+
+**`isWeekendDay(day)`**
+
+Checks if the given day (0-6) is a weekend day.
+
+**`isWorkDay(day)`**
+
+Checks if the given day (0-6) is a work day.
+
+**`isWeekendDate(date)`**
+
+Checks if the given date is a weekend day.
+
+**`isWorkDate(date)`**
+
+Checks if the given date is a work day.
+
+**`setWeekendDays(daysArray)`**
+
+Sets the given days (0-6) as weekend days. Any day not in the array will be set as a work day.
+
+**`daysInPeriod(firstDay, length, daysArray)`**
+
+Counts the days defined in daysArray within the given period.
+
+* firstDay - day to start counting from (0-6)
+* length - the total of days to count (can be negative)
+* daysArray - array of days to count (if you want to count Mondays and Tuesdays use [1, 2])
+
+**`weekendDaysInPeriod(firstDay, length)`**
+
+Counts weekend days within period.
+
+**`workDaysInPeriod(firstDay, length)`**
+
+Counts work days within period.
+
+**`isYearAfter(date1, date2)`**
+
+Checks if date1 year is after date2 year.
+
+**`isMonthAfter(date1, date2)`**
+
+Checks if date1 month is after date2 month.
+
+**`isDayAfter(date1, date2)`**
+
+Checks if date1 date is after date2 date.
+
+**`isYearBefore(date1, date2)`**
+
+Checks if date1 year is before date2 year.
+
+**`isMonthBefore(date1, date2)`**
+
+Checks if date1 month is before date2 month.
+
+**`isDayBefore(date1, date2)`**
+
+Checks if date1 date is before date2 date.
+
+**`isYearBetween(date1, date2, date3)`**
+
+Checks if date1 year is between date2 and date3 years.
+
+**`isMonthBetween(date1, date2, date3)`**
+
+Checks if date1 month is between date2 and date3 months.
+
+**`isDayBetween(date1, date2, date3)`**
+
+Checks if date1 is between date2 and date3.
+
+**`isoWeekDay`**
+
+Converts day (0-6) to iso day (1-7).
