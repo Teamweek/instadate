@@ -205,6 +205,6 @@ Checks if date1 month is between date2 and date3 months.
 
 Checks if date1 is between date2 and date3.
 
-**`isoWeekDay`**
+**`isoWeekDay(day)`**
 
 Converts day (0-6) to iso day (1-7).
