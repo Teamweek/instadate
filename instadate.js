@@ -112,9 +112,14 @@ var instadate = {
   /* Other */
 
   dates: function(start, end) {
+    if (start > end) {
+      var temp = end;
+      end = start;
+      start = temp;
+    }
     var result = []
-      , diff = instadate.differenceInDays(start, end);
-    for (var i = 0; i < diff; i++) {
+      , diff = instadate.differenceInDates(start, end);
+    for (var i = 0; i <= diff; i++) {
       result.push(instadate.addDays(start, i));
     }
     return result;

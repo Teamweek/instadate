@@ -157,13 +157,25 @@ test('isSameDay', function (t) {
   t.end();
 });
 
-test('dates array', function (t) {
+test('dates', function (t) {
   var start = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)')
     , end = instadate.noon(new Date('Thu Jan 21 2016 13:07:17 GMT+0200 (EET)'));
   var dates = instadate.dates(start, end);
-  t.equal(dates.length, 2);
+  t.equal(dates.length, 4);
   t.ok(instadate.equal(dates[0], start));
   t.equal(dates[1].toString(), instadate.addDays(start, 1).toString());
+  t.equal(dates[2].toString(), instadate.addDays(start, 2).toString());
+  t.equal(dates[3].toString(), instadate.addDays(start, 3).toString());
+
+  var start = instadate.noon(new Date('Thu Jan 21 2016 13:07:17 GMT+0200 (EET)'))
+    , end = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var dates = instadate.dates(start, end);
+  t.equal(dates.length, 4);
+  t.ok(instadate.equal(dates[0], end));
+  t.equal(dates[1].toString(), instadate.addDays(end, 1).toString());
+  t.equal(dates[2].toString(), instadate.addDays(end, 2).toString());
+  t.equal(dates[3].toString(), instadate.addDays(end, 3).toString());
+
   t.end();
 });
 
