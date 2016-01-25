@@ -7,6 +7,16 @@ A minimal high performance date library for Node.js and Browser. Use it to compa
 npm install instadate
 ```
 
+## Usage
+```javascript
+var instadate = require('instadate');
+
+var date1 = new Date();
+var date2 = instadate.addDays(date1, 1);
+
+instadate.differenceInDates(date1, date2);
+```
+
 ## Motivation behind Instadate
 
 Current popular date libraries put a lot of effort into doing a lot of things correctly. Instadate on the other hand only has a handful of features that are all geared towards performance. Instadate is more of a wrapper around the native JavaScript Date than a full on date library.
