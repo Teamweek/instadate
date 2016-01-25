@@ -47,3 +47,39 @@ Returns the difference in days (24 hour periods) between two dates. Excludes wee
 
 ### `instadate.differenceInWorkDays(from, to)`
 Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
+
+### `instadate.differenceInDates(from, to)`
+Similar to `differenceInDays` however counts all dates that fit into the period, not 24 hour periods.
+
+### `instadate.addDays(date, days)`
+Returns a cloned date with days added to it, use negative input for subtraction.
+
+### `instadate.addHours(date, hours)`
+Returns a cloned date with hours added to it, use negative input for subtraction.
+
+### `instadate.addMinutes(date, minutes)`
+Returns a cloned date with minutes added to it, use negative input for subtraction.
+
+### `instadate.addSeconds(date, seconds)`
+Returns a cloned date with seconds added to it, use negative input for subtraction.
+
+### `instadate.addMilliseconds(date, milliseconds)`
+Returns a cloned date with milliseconds added to it, use negative input for subtraction.
+
+### `instadate.isSameYear(date1, date2)`
+Returns if the years are equal
+
+### `instadate.isSameMonth(date1, date2)`
+Returns if the years and months are equal
+
+### `instadate.isSameDay(date1, date2)`
+Returns if the years, months and dates are equal
+
+### `instadate.equal(date1, date2)`
+Returns if the dates are equal to millisecond precision
+
+### `instadate.min(date1, date2)`
+Returns the earliest date
+
+### `instadate.max(date1, date2)`
+Returns the latest date
