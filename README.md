@@ -28,13 +28,6 @@ Use Instadate when you need to run thousands of date manipulations or comparison
 * is **small** (just look at the source)
 * is **immutable** (Instadate will always return new date objects and never modify the given ones)
 
-## Testing
-```
-npm test
-```
-
-**NB! Documentation is a WIP, look at source for all functions**
-
 ## API Reference
 
 **`utc(date)`**
@@ -151,7 +144,7 @@ Checks if the given date is a work day.
 
 **`setWeekendDays(daysArray)`**
 
-Sets the given days (0-6) as weekend days. Any day not in the array will be set as a work day.
+Sets the given days (array containing integers from 0 to 6) as weekend days. Any day not in the array will be set as a work day. After the weekend days are set all Instadate functions will use the new work and weekend days.
 
 **`daysInPeriod(firstDay, length, daysArray)`**
 
@@ -208,3 +201,8 @@ Checks if date1 is between date2 and date3.
 **`isoWeekDay(day)`**
 
 Converts day (0-6) to iso day (1-7).
+
+## Testing
+```
+npm test
+```
