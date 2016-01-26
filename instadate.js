@@ -83,22 +83,19 @@ var instadate = {
   /* Comparison */
 
   isSameYear: function (a, b) {
-    return a.getFullYear() === b.getFullYear();
+    return a && b && a.getFullYear() === b.getFullYear();
   },
 
   isSameMonth: function (a, b) {
-    return a.getMonth() === b.getMonth() &&
-      a.getFullYear() === b.getFullYear();
+    return instadate.isSameYear(a, b) && a.getMonth() === b.getMonth();
   },
 
   isSameDay: function (a, b) {
-    return a.getDate() === b.getDate() &&
-      a.getMonth() === b.getMonth() &&
-      a.getFullYear() === b.getFullYear();
+    return instadate.isSameMonth(a, b) && a.getDate() === b.getDate();
   },
 
   equal: function (d1, d2) {
-    return !(d1 - d2);
+    return d1 && d2 && !(d1 - d2);
   },
 
   min: function (d1, d2) {

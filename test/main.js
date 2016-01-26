@@ -140,11 +140,21 @@ test('differenceInSeconds', function (t) {
   t.end();
 });
 
+test('isSameYear', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  t.ok(instadate.isSameYear(d, instadate.addDays(d, 1)));
+  t.notOk(instadate.isSameYear(d, null));
+  t.notOk(instadate.isSameYear(null, null));
+  t.notOk(instadate.isSameYear(null, d));
+  t.end();
+});
+
 test('isSameMonth', function (t) {
   var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   t.ok(instadate.isSameMonth(d, instadate.addDays(d, 1)));
   t.ok(instadate.isSameMonth(d, instadate.addDays(d, 13)));
   t.notOk(instadate.isSameMonth(d, instadate.addDays(d, 14)));
+  t.notOk(instadate.isSameMonth(d, null));
   t.end();
 });
 
@@ -154,6 +164,7 @@ test('isSameDay', function (t) {
   t.ok(instadate.isSameDay(d, instadate.addHours(d, 10)));
   t.ok(instadate.isSameDay(d, instadate.noon(d)));
   t.notOk(instadate.isSameDay(d, instadate.addDays(d, 1)));
+  t.notOk(instadate.isSameDay(d, null));
   t.end();
 });
 
@@ -183,6 +194,9 @@ test('equal', function (t) {
   t.notEqual(new Date(), new Date());
   t.ok(instadate.equal(new Date(), new Date()));
   t.notOk(instadate.equal(new Date(), instadate.addMilliseconds(new Date(), 1)));
+  t.notOk(instadate.equal(new Date(), null));
+  t.notOk(instadate.equal(null, new Date()));
+  t.notOk(instadate.equal(null, null));
   t.end();
 });
 
