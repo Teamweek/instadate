@@ -19,7 +19,7 @@ instadate.differenceInDates(date1, date2);
 
 ## Motivation behind Instadate
 
-Current popular date libraries put a lot of effort into doing a lot of things correctly. Instadate on the other hand only has a handful of features that are all geared towards performance. Instadate is more of a wrapper around the native JavaScript Date than a full on date library.
+Current popular date libraries put a lot of effort into doing a lot causing them to lose a lot of performance because of heavy abstractions. Instadate on the other hand only has a handful of features that are all geared towards performance. Instadate is more of a wrapper around the native JavaScript Date than a full on date library.
 
 Use Instadate when you need to run thousands of date manipulations or comparisons per second  .
 
