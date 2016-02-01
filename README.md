@@ -21,7 +21,7 @@ instadate.differenceInDates(date1, date2);
 
 Current popular date libraries put a lot of effort into doing a lot causing them to lose a lot of performance because of heavy abstractions. Instadate on the other hand only has a handful of features that are all geared towards performance. Instadate is more of a wrapper around the native JavaScript Date than a full on date library.
 
-Use Instadate when you need to run thousands of date manipulations or comparisons per second  .
+Use Instadate when you need to run thousands of date manipulations or comparisons per second. Instadate is managed and used by [Teamweek](https://teamweek.com/) team calendar.
 
 **Instadate..**
 * is **fast** (10 - 1000 times faster than moment)
