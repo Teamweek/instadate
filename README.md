@@ -46,9 +46,13 @@ Returns the difference in days (24 hour periods) between two dates. Returned res
 
 Returns the difference in hours (60 minute periods) between two dates. Returned result can be negative.
 
-**`differenceInDays(from, to)`**
+**`differenceInMinutes(from, to)`**
 
-Returns the difference in days (24 hour periods) between two dates. Returned result can be negative.
+Returns the difference in minutes (60 second periods) between two dates. Returned result can be negative.
+
+**`differenceInSeconds(from, to)`**
+
+Returns the difference in seconds (1000 milisecond periods) between two dates. Returned result can be negative.
 
 **`differenceInWeekendDays(from, to)`**
 
