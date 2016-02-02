@@ -52,7 +52,7 @@ Returns the difference in days (24 hour periods) between two dates. Returned res
 
 **`differenceInWeekendDays(from, to)`**
 
-Returns the difference in days (24 hour periods) between two dates. Excludes weekend days. Returned result can be negative.
+Returns the difference in days (24 hour periods) between two dates. Excludes work days. Returned result can be negative.
 
 **`differenceInWorkDays(from, to)`**
 
