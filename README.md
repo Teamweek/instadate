@@ -1,4 +1,4 @@
-# Instadate
+# Instadate [![Build Status](https://travis-ci.org/Teamweek/instadate.svg?branch=master)](https://travis-ci.org/Teamweek/instadate)
 
 A minimal high performance date library for Node.js and Browser. Use it to compare and manipulate dates.
 
