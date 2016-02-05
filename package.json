@@ -1,7 +1,7 @@
 {
   "name": "instadate",
   "version": "0.1.6",
-  "description": "",
+  "description": "A minimal high performance date library for Node.js and Browser",
   "main": "instadate.js",
   "scripts": {
     "test": "node test/main.js | faucet"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Teamweek/instadate.git"
   },
-  "author": "",
+  "author": "Serge Herkül @ Teamweek",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Teamweek/instadate/issues"
