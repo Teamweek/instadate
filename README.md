@@ -52,7 +52,7 @@ Returns the difference in minutes (60 second periods) between two dates. Returne
 
 **`differenceInSeconds(from, to)`**
 
-Returns the difference in seconds (1000 milisecond periods) between two dates. Returned result can be negative.
+Returns the difference in seconds (1000 millisecond periods) between two dates. Returned result can be negative.
 
 **`differenceInWeekendDays(from, to)`**
 
