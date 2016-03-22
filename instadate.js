@@ -206,6 +206,13 @@ var instadate = {
   },
 
   /* isAfter & isBefore */
+  isAfter: function (a, b) {
+    return a.getTime() > b.getTime()
+  },
+
+  isBefore: function (a, b) {
+    return a.getTime() < b.getTime()
+  },
 
   isYearAfter: function (a, b) {
     return a.getFullYear() > b.getFullYear();
