@@ -344,6 +344,28 @@ test('workDaysInPeriod', function (t) {
   t.end();
 });
 
+test('isAfter', function (t) {
+  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+
+  t.notOk(instadate.isAfter(d, new Date()));
+  t.notOk(instadate.isAfter(instadate.addDays(d, 30), new Date()));
+  t.ok(instadate.isAfter(new Date(), d));
+
+  t.end();
+});
+
+test('isBefore', function (t) {
+  var a = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
+  var b = new Date('Mon Jan 20 2016 13:07:17 GMT+0200 (EET)');
+
+  t.ok(instadate.isBefore(a, b));
+  t.notOk(instadate.isBefore(b, a));
+  t.ok(instadate.isBefore(a, new Date()));
+  t.ok(instadate.isBefore(b, new Date()));
+
+  t.end();
+});
+
 test('isYearAfter', function (t) {
   var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   t.notOk(instadate.isYearAfter(d, d));

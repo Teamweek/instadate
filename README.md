@@ -166,6 +166,9 @@ Counts weekend days within period.
 
 Counts work days within period.
 
+**`isAfter(date1, date2)`**
+Checks if date1 is after date2.
+
 **`isYearAfter(date1, date2)`**
 
 Checks if date1 year is after date2 year.
@@ -177,6 +180,9 @@ Checks if date1 month is after date2 month.
 **`isDayAfter(date1, date2)`**
 
 Checks if date1 date is after date2 date.
+
+**`isBefore(date1, date2)`**
+Checks if date1 is before date2.
 
 **`isYearBefore(date1, date2)`**
 
