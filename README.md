@@ -66,6 +66,14 @@ Returns the difference in days (24 hour periods) between two dates. Excludes wee
 
 Similar to `differenceInDays` however counts all dates that fit into the period, not 24 hour periods.
 
+**`addYears(date, years)`**
+
+Returns a cloned date with years added to it, use negative input for subtraction.
+
+**`addMonths(date, months)`**
+
+Returns a cloned date with months added to it, use negative input for subtraction.
+
 **`addDays(date, days)`**
 
 Returns a cloned date with days added to it, use negative input for subtraction.

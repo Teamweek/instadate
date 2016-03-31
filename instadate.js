@@ -60,6 +60,18 @@ var instadate = {
 
   /* Adding time to dates */
 
+  addYears: function (d, years) {
+    var date = new Date(d);
+    date.setFullYear(date.getFullYear() + years);
+    return date;
+  },
+
+  addMonths: function (d, months) {
+    var date = new Date(d);
+    date.setMonth(date.getMonth() + months);
+    return date;
+  },
+
   addDays: function (d, days) {
     return instadate.addMilliseconds(d, days * constants.MS_IN_DAY);
   },
