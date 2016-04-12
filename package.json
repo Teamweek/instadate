@@ -7,7 +7,7 @@
     "instadate.js"
   ],
   "scripts": {
-    "test": "node test/main.js | faucet"
+    "test": "TZ=Europe/Tallinn node test/main.js | faucet"
   },
   "repository": {
     "type": "git",
