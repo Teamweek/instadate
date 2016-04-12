@@ -27,6 +27,31 @@ test('noon with input date', function (t) {
   t.end();
 });
 
+test('adding years', function (t) {
+  var d = instadate.noon(new Date('Mon Feb 18 2016 13:07:17 GMT+0200 (EET)'));
+  t.equal(d.getFullYear(), 2016);
+  t.equal(instadate.addYears(d, 1).getFullYear(), 2017);
+  t.equal(instadate.addYears(d, -1).getFullYear(), 2015);
+  t.end();
+});
+
+test('adding months', function (t) {
+  var d = instadate.noon(new Date('Mon Feb 18 2016 13:07:17 GMT+0200 (EET)'));
+  t.equal(d.getMonth(), 1);
+  t.equal(instadate.addMonths(d, 1).getMonth(), 2);
+  t.equal(instadate.addMonths(d, -1).getMonth(), 0);
+
+  var date1 = instadate.addMonths(d, 12);
+  t.equal(date1.getMonth(), 1);
+  t.equal(date1.getFullYear(), 2017);
+
+  var date2 = instadate.addMonths(d, -12);
+  t.equal(date2.getMonth(), 1);
+  t.equal(date2.getFullYear(), 2015);
+
+  t.end();
+});
+
 test('adding days', function (t) {
   var d = instadate.noon(new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)'));
   t.equal(d.getDate(), 18);
