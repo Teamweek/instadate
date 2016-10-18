@@ -224,3 +224,7 @@ Converts day (0-6) to iso day (1-7).
 ```
 npm test
 ```
+
+## Changelog
+
+* 0.3.1 - Modified `addDays`, `addHours`, `addMinutes`, `addSeconds` and `addMilliseconds` functions to work with dayling saving changes.

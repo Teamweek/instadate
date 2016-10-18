@@ -60,6 +60,16 @@ test('adding days', function (t) {
   t.end();
 });
 
+test('adding days over daylight change', function (t) {
+  var d = new Date('2016-10-15T00:00:00.000Z');
+  t.equal(d.getDate(), 15);
+  var hours = d.getHours(); //Timezone specific hours will be 3, not 0
+  var newDate = instadate.addDays(d, 30);
+  t.equal(newDate.getDate(), 14);
+  t.equal(newDate.getHours(), hours);
+  t.end();
+});
+
 test('adding hours', function (t) {
   var d = instadate.noon();
   t.equal(instadate.addHours(d, 1).getHours(), 13);
@@ -69,10 +79,33 @@ test('adding hours', function (t) {
   t.end();
 });
 
+test('adding hours over daylight change', function (t) {
+  var d = new Date('2016-10-30T00:00:00.000Z');
+  t.equal(d.getDate(), 30);
+  var hours = d.getHours(); //Timezone specific hours will be 3, not 0
+  var newDate = instadate.addHours(d, 24 * 2 + 1);
+  t.equal(newDate.getDate(), 1);
+  t.equal(newDate.getHours(), hours + 1);
+  t.end();
+});
+
 test('adding minutes', function (t) {
   var d = instadate.noon();
   t.equal(instadate.addMinutes(d, 1).getMinutes(), 1);
+  t.equal(instadate.addMinutes(d, 1).getMinutes(), 1);
   t.equal(instadate.addMinutes(d, -1).getMinutes(), 59);
+  t.end();
+});
+
+test('adding minutes over daylight change', function (t) {
+  var d = new Date('2016-10-30T00:00:00.000Z');
+  t.equal(d.getDate(), 30);
+  t.equal(d.getMinutes(), 0);
+  var hours = d.getHours(); //Timezone specific hours will be 3, not 0
+  var newDate = instadate.addMinutes(d, 60 * 24 * 2 + 25);
+  t.equal(newDate.getDate(), 1);
+  t.equal(newDate.getHours(), hours);
+  t.equal(newDate.getMinutes(), 25);
   t.end();
 });
 
@@ -88,6 +121,18 @@ test('adding seconds', function (t) {
   t.end();
 });
 
+test('adding seconds over daylight change', function (t) {
+  var d = new Date('2016-10-30T00:00:00.000Z');
+  t.equal(d.getDate(), 30);
+  var hours = d.getHours(); //Timezone specific hours will be 3, not 0
+  var newDate = instadate.addSeconds(d, 60 * 60 * 24 * 2 + 25);
+  t.equal(newDate.getDate(), 1);
+  t.equal(newDate.getHours(), hours);
+  t.equal(newDate.getMinutes(), 0);
+  t.equal(newDate.getSeconds(), 25);
+  t.end();
+});
+
 test('adding milliseconds', function (t) {
   var d = instadate.noon();
   var added = instadate.addMilliseconds(d, 1);
@@ -95,6 +140,19 @@ test('adding milliseconds', function (t) {
 
   var subtracted = instadate.addMilliseconds(d, -1);
   t.equal(subtracted.getMilliseconds(), 999);
+  t.end();
+});
+
+test('adding milliseconds over daylight change', function (t) {
+  var d = new Date('2016-10-30T00:00:00.000Z');
+  t.equal(d.getDate(), 30);
+  var hours = d.getHours(); //Timezone specific hours will be 3, not 0
+  var newDate = instadate.addMilliseconds(d, 1000 * 60 * 60 * 24 * 2 + 25);
+  t.equal(newDate.getDate(), 1);
+  t.equal(newDate.getHours(), hours);
+  t.equal(newDate.getMinutes(), 0);
+  t.equal(newDate.getSeconds(), 0);
+  t.equal(newDate.getMilliseconds(), 25);
   t.end();
 });
 

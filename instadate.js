@@ -73,23 +73,33 @@ var instadate = {
   },
 
   addDays: function (d, days) {
-    return instadate.addMilliseconds(d, days * constants.MS_IN_DAY);
+    var date = new Date(d);
+    date.setDate(date.getDate() + days);
+    return date;
   },
 
   addHours: function(d, hours) {
-    return instadate.addMilliseconds(d, hours * constants.MS_IN_HOUR);
+    var date = new Date(d);
+    date.setHours(date.getHours() + hours);
+    return date;
   },
 
   addMinutes: function(d, minutes) {
-    return instadate.addMilliseconds(d, minutes * constants.MS_IN_MINUTE);
+    var date = new Date(d);
+    date.setMinutes(date.getMinutes() + minutes);
+    return date;
   },
 
   addSeconds: function (d, seconds) {
-    return instadate.addMilliseconds(d, seconds * constants.MS_IN_SECOND);
+    var date = new Date(d);
+    date.setSeconds(date.getSeconds() + seconds);
+    return date;
   },
 
   addMilliseconds: function (d, ms) {
-    return new Date(d.getTime() + ms);
+    var date = new Date(d);
+    date.setMilliseconds(date.getMilliseconds() + ms);
+    return date;
   },
 
   /* Comparison */
