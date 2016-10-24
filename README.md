@@ -8,13 +8,28 @@ npm install instadate
 ```
 
 ## Usage
+
+### ES6
+
+
+```javascript
+import instadate from 'instadate';
+
+const date1 = new Date();
+const date2 = instadate.addDays(date1, 1);
+
+instadate.differenceInDates(date1, date2); // => 1
+```
+
+### ES5
+
 ```javascript
 var instadate = require('instadate');
 
 var date1 = new Date();
 var date2 = instadate.addDays(date1, 1);
 
-instadate.differenceInDates(date1, date2);
+instadate.differenceInDates(date1, date2); // => 1
 ```
 
 ## Motivation behind Instadate
