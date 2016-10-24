@@ -190,6 +190,7 @@ Checks if date1 month is after date2 month.
 Checks if date1 date is after date2 date.
 
 **`isBefore(date1, date2)`**
+
 Checks if date1 is before date2.
 
 **`isYearBefore(date1, date2)`**
