@@ -2,6 +2,15 @@
   "name": "instadate",
   "version": "0.3.1",
   "description": "A minimal high performance date library for Node.js and Browser",
+  "keywords": [
+    "instadate",
+    "date",
+    "dates",
+    "time",
+    "timezone",
+    "timezones",
+    "datetime"
+  ],
   "main": "instadate.js",
   "files": [
     "instadate.js"
