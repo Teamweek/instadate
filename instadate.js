@@ -121,11 +121,11 @@ var instadate = {
   },
 
   min: function (d1, d2) {
-    return d1 < d2 ? d1 : d2;
+    return d1 - d2 < 0 ? d1 : d2;
   },
 
   max: function (d1, d2) {
-    return d1 > d2 ? d1 : d2;
+    return d1 - d2 > 0 ? d1 : d2;
   },
 
   /* Other */
