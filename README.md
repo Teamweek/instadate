@@ -145,6 +145,29 @@ Returns the date part of a Date as a string. Example: `Mon Jan 25 2016`.
 
 Returns the date part of an iso Date as a string. Example: `2016-01-25`.
 
+**`parseISOString(isoString)`**
+
+Parses an ISO string to a date. If used in a browser environment also resets the timezone offset using `resetTimezoneOffset`.
+Example:
+```js
+const date = instadate.parseISOString('2017-04-24');
+// Sun Apr 24 2017 00:00:00 GMT-0700 (PDT)
+```
+
+**`resetTimezoneOffset(date)`**
+
+Resets the timezone offset caused by browsers when parsing a date.
+Example:
+```js
+let date = new Date('2017-04-24');
+// Sun Apr 23 2017 17:00:00 GMT-0700 (PDT)
+// Note how the parsed date is 23, not 24
+// This is caused by browsers and does not happen in node
+
+date = instadate.resetTimezoneOffset(date);
+// Sun Apr 24 2017 00:00:00 GMT-0700 (PDT)
+```
+
 **`firstDateInMonth(date)`**
 
 Returns the first date of the month.
@@ -243,4 +266,6 @@ npm test
 
 ## Changelog
 
+* 0.4.0 - Added `parseISOString` and `resetTimezoneOffset` functions
+* 0.3.2 - Performance optimisations. Subtract dates instead of comparing them.
 * 0.3.1 - Modified `addDays`, `addHours`, `addMinutes`, `addSeconds` and `addMilliseconds` functions to work with dayling saving changes.

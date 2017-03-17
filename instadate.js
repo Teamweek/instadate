@@ -1,6 +1,7 @@
 var difference = require('lodash.difference');
 var trunc = require('math-trunc');
 
+var isNode = typeof window === 'undefined';
 var constants = {
   MS_IN_DAY: 1000 * 60 * 60 * 24,
   MS_IN_HOUR: 1000 * 60 * 60,
@@ -150,6 +151,18 @@ var instadate = {
 
   isoDateString: function (date) {
     return date.toISOString().slice(0, 10);
+  },
+
+  parseISOString: function (isoString) {
+    if (isNode) {
+      return new Date(isoString);
+    } else {
+      return instadate.resetTimezoneOffset(new Date(isoString));
+    }
+  },
+
+  resetTimezoneOffset: function (date) {
+    return new Date(date.getTime() + date.getTimezoneOffset() * 60000);
   },
 
   firstDateInMonth: function (d) {
