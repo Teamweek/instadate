@@ -145,12 +145,18 @@ var instadate = {
     return result;
   },
 
-  dateString: function (date) {
-    return date.toString().slice(0, 15);
-  },
-
   isoDateString: function (date) {
-    return date.toISOString().slice(0, 10);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return year + '-' + month + '-' + day;
   },
 
   parseISOString: function (isoString) {

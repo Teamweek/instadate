@@ -266,6 +266,7 @@ npm test
 
 ## Changelog
 
+* 0.5.0 - Changed `isoDateString` to work correctly with UTC+13, UTC+14 & UTC-12. Removed `dateString` function.
 * 0.4.0 - Added `parseISOString` and `resetTimezoneOffset` functions
 * 0.3.2 - Performance optimisations. Subtract dates instead of comparing them.
 * 0.3.1 - Modified `addDays`, `addHours`, `addMinutes`, `addSeconds` and `addMilliseconds` functions to work with dayling saving changes.
