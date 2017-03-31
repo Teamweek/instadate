@@ -283,12 +283,6 @@ test('equal', function (t) {
   t.end();
 });
 
-test('dateString', function (t) {
-  var d = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)')
-  t.equal(instadate.dateString(d), 'Mon Jan 18 2016');
-  t.end();
-});
-
 test('min', function (t) {
   var d1 = new Date('Mon Jan 18 2016 13:07:17 GMT+0200 (EET)');
   var d2 = new Date('Mon Jan 18 2016 12:07:17 GMT+0200 (EET)');
