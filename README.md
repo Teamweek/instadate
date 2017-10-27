@@ -148,7 +148,6 @@ Returns the date part of an iso Date as a string. Example: `2016-01-25`.
 **`parseISOString(isoString)`**
 
 Parses an ISO string to a date. If used in a browser environment also resets the timezone offset using `resetTimezoneOffset`.
-Example:
 ```js
 const date = instadate.parseISOString('2017-04-24');
 // Sun Apr 24 2017 00:00:00 GMT-0700 (PDT)
@@ -157,7 +156,6 @@ const date = instadate.parseISOString('2017-04-24');
 **`resetTimezoneOffset(date)`**
 
 Resets the timezone offset caused by browsers when parsing a date.
-Example:
 ```js
 let date = new Date('2017-04-24');
 // Sun Apr 23 2017 17:00:00 GMT-0700 (PDT)
@@ -258,6 +256,15 @@ Checks if date1 is between date2 and date3.
 **`isoWeekDay(day)`**
 
 Converts day (0-6) to iso day (1-7).
+
+**`daysInMonth(month, year)`**
+
+Returns how many days are in a month.
+```js
+let date = new Date();
+instadate.daysInMonth(date.getMonth(), date.getFullYear()); //28, 29, 30 or 31
+```
+
 
 ## Testing
 ```
