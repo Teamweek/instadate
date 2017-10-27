@@ -1,6 +1,6 @@
 {
   "name": "instadate",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A minimal high performance date library for Node.js and Browser",
   "keywords": [
     "instadate",

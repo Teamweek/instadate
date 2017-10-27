@@ -569,3 +569,15 @@ test('isoWeekDay', function (t) {
   t.equal(instadate.isoWeekDay(instadate.addDays(d, 7)), 1);
   t.end();
 });
+
+test('daysInMonth', function (t) {
+  var d = new Date('Mon Jan 18 2018 13:07:17 GMT+0200 (EET)');
+  t.equal(instadate.daysInMonth(d.getMonth(), d.getFullYear()), 31);
+  d = new Date('Mon Feb 18 2018 13:07:17 GMT+0200 (EET)');
+  t.equal(instadate.daysInMonth(d.getMonth(), d.getFullYear()), 28);
+  d = new Date('Mon Feb 18 2020 13:07:17 GMT+0200 (EET)');
+  t.equal(instadate.daysInMonth(d.getMonth(), d.getFullYear()), 29);
+  d = new Date('Mon Dec 18 2018 13:07:17 GMT+0200 (EET)');
+  t.equal(instadate.daysInMonth(d.getMonth(), d.getFullYear()), 31);
+  t.end();
+});
