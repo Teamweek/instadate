@@ -3,6 +3,7 @@
 A minimal high performance date library for Node.js and Browser. Use it to compare and manipulate dates.
 
 ## Installation
+
 ```
 npm install instadate
 ```
@@ -11,9 +12,8 @@ npm install instadate
 
 ### ES6
 
-
 ```javascript
-import instadate from 'instadate';
+import instadate from "instadate";
 
 const date1 = new Date();
 const date2 = instadate.addDays(date1, 1);
@@ -24,7 +24,7 @@ instadate.differenceInDates(date1, date2); // => 1
 ### ES5
 
 ```javascript
-var instadate = require('instadate');
+var instadate = require("instadate");
 
 var date1 = new Date();
 var date2 = instadate.addDays(date1, 1);
@@ -39,9 +39,10 @@ Current popular date libraries put a lot of effort into doing a lot causing them
 Use Instadate when you need to run thousands of date manipulations or comparisons per second. Instadate is managed and used by [Teamweek](https://teamweek.com/) team calendar.
 
 **Instadate..**
-* is **fast** (10 - 1000 times faster than moment)
-* is **small** (just look at the source)
-* is **immutable** (Instadate will always return new date objects and never modify the given ones)
+
+- is **fast** (10 - 1000 times faster than moment)
+- is **small** (just look at the source)
+- is **immutable** (Instadate will always return new date objects and never modify the given ones)
 
 ## API Reference
 
@@ -148,16 +149,18 @@ Returns the date part of an iso Date as a string. Example: `2016-01-25`.
 **`parseISOString(isoString)`**
 
 Parses an ISO string to a date. If used in a browser environment also resets the timezone offset using `resetTimezoneOffset`.
+
 ```js
-const date = instadate.parseISOString('2017-04-24');
+const date = instadate.parseISOString("2017-04-24");
 // Sun Apr 24 2017 00:00:00 GMT-0700 (PDT)
 ```
 
 **`resetTimezoneOffset(date)`**
 
 Resets the timezone offset caused by browsers when parsing a date.
+
 ```js
-let date = new Date('2017-04-24');
+let date = new Date("2017-04-24");
 // Sun Apr 23 2017 17:00:00 GMT-0700 (PDT)
 // Note how the parsed date is 23, not 24
 // This is caused by browsers and does not happen in node
@@ -198,9 +201,9 @@ Sets the given days (array containing integers from 0 to 6) as weekend days. Any
 
 Counts the days defined in daysArray within the given period.
 
-* firstDay - day to start counting from (0-6)
-* length - the total of days to count (can be negative)
-* daysArray - array of days to count (if you want to count Mondays and Tuesdays use [1, 2])
+- firstDay - day to start counting from (0-6)
+- length - the total of days to count (can be negative)
+- daysArray - array of days to count (if you want to count Mondays and Tuesdays use [1, 2])
 
 **`weekendDaysInPeriod(firstDay, length)`**
 
@@ -260,21 +263,26 @@ Converts day (0-6) to iso day (1-7).
 **`daysInMonth(month, year)`**
 
 Returns how many days are in a month.
+
 ```js
 let date = new Date();
 instadate.daysInMonth(date.getMonth(), date.getFullYear()); //28, 29, 30 or 31
 ```
 
-
 ## Testing
+
 ```
 npm test
 ```
 
+## License
+
+MIT
+
 ## Changelog
 
-* 0.6.0 - Added `daysInMonth` function.
-* 0.5.0 - Changed `isoDateString` to work correctly with UTC+13, UTC+14 & UTC-12. Removed `dateString` function.
-* 0.4.0 - Added `parseISOString` and `resetTimezoneOffset` functions
-* 0.3.2 - Performance optimisations. Subtract dates instead of comparing them.
-* 0.3.1 - Modified `addDays`, `addHours`, `addMinutes`, `addSeconds` and `addMilliseconds` functions to work with dayling saving changes.
+- 0.6.0 - Added `daysInMonth` function.
+- 0.5.0 - Changed `isoDateString` to work correctly with UTC+13, UTC+14 & UTC-12. Removed `dateString` function.
+- 0.4.0 - Added `parseISOString` and `resetTimezoneOffset` functions
+- 0.3.2 - Performance optimisations. Subtract dates instead of comparing them.
+- 0.3.1 - Modified `addDays`, `addHours`, `addMinutes`, `addSeconds` and `addMilliseconds` functions to work with dayling saving changes.

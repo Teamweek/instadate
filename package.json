@@ -23,7 +23,7 @@
     "url": "git+https://github.com/Teamweek/instadate.git"
   },
   "author": "Serge Herkül @ Teamweek",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Teamweek/instadate/issues"
   },
